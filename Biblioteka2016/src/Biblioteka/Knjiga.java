@@ -26,8 +26,6 @@ public class Knjiga {
 		this.isbn = isbn;
 	}
 
-
-
 	public LinkedList<Autor> getAutori() {
 		return autori;
 	}
