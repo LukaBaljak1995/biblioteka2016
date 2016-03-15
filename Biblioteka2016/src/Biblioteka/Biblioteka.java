@@ -10,11 +10,17 @@ public class Biblioteka implements Interfejs {
 
 	@Override
 	public void dodajKnjigu(Knjiga k) {
-		knjige.add(k);
+		if (k == null || knjige.contains(k))
+			throw new RuntimeException("Greska pri unosu!");
+		else
+			knjige.add(k);
 	}
 
 	@Override
 	public void obrisiKnjigu(Knjiga k) {
+		if (k == null || !knjige.contains(k))
+			throw new RuntimeException("Greska pri unosu!");
+		else
 		knjige.remove(k);
 	}
 
@@ -25,6 +31,8 @@ public class Biblioteka implements Interfejs {
 
 	@Override
 	public LinkedList<Knjiga> pronadjiKnjigu(Autor autor, long ISBN, String naslov, String izdavac) {
+		if(naslov == null)
+			throw new RuntimeException("Naslov je null!");
 		LinkedList<Knjiga> rezultat = new LinkedList<>();
 		for (int i = 0; i < knjige.size(); i++) {
 			if (knjige.get(i).getNaslov().contains(naslov)) {
